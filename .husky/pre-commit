@@ -10,13 +10,13 @@ npm run lint ||
 (
     echo " Lint failed, please fix the errors before committing.";
     false;
-)
+);
 
 npm run test-changed || 
 (
     echo " Tests failed, please fix the errors before committing.";
     false;
-)
+);
 
 echo "- ${GREEN}Lint${NC} passed. Proceeding with commit...";
 
