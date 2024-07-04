@@ -12,6 +12,11 @@
     "test-changed": "vitest run --changed --passWithNoTests",
     "test": "vitest run"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test-changed && npm run lint"
+    }
+  },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
