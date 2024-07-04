@@ -1,0 +1,11 @@
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+npm lint || 
+(
+    echo "Lint failed, please fix the errors before committing.";
+    false;
+)
+
+echo `${GREEN}Lint${NC} passed. Proceeding with commit...`;
+
+echo `${GREEN} All pre-commit hooks passed.${NC} Proceeding with commit...`;
