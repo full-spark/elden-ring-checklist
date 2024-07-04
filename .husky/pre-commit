@@ -1,0 +1,25 @@
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+CYAN="\033[0;36m"
+NC="\033[0m" # No Color
+
+echo "\n===== ${CYAN}Running pre-commit hooks...${NC} =====";
+
+npm run pre-commit:lint || 
+(
+    echo " Lint failed, please fix the errors before committing.";
+    false;
+);
+
+echo "- ${GREEN}Tests${NC} passed. Proceeding with commit...";
+
+npm run pre-commit:test || 
+(
+    echo " Tests failed, please fix the errors before committing.";
+    false;
+);
+
+echo "- ${GREEN}Lint${NC} passed. Proceeding with commit...";
+
+echo "${GREEN} All pre-commit hooks passed.${NC} Proceeding with commit...\n";
