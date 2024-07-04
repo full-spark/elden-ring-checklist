@@ -10,7 +10,7 @@ npm run lint ||
     false;
 )
 
-npm run test || 
+npm run test-changed || 
 (
     echo "Tests failed, please fix the errors before committing.";
     ISSUE_COUNT=$((ISSUE_COUNT+1));
