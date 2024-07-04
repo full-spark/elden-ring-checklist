@@ -12,6 +12,8 @@ npm run lint ||
     false;
 );
 
+echo "- ${GREEN}Tests${NC} passed. Proceeding with commit...";
+
 npm run test-changed || 
 (
     echo " Tests failed, please fix the errors before committing.";
