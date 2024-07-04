@@ -8,9 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "prepare": "husky",
-    "test-changed": "vitest run --changed --passWithNoTests",
-    "test": "vitest run"
+    "test": "vitest run",
+    "pre-commit:lint": "npm run lint",
+    "pre-commit:test": "vitest run --changed --passWithNoTests --silent"
   },
   "dependencies": {
     "react": "^18.3.1",

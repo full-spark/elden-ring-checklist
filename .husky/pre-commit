@@ -6,7 +6,7 @@ NC="\033[0m" # No Color
 
 echo "\n===== ${CYAN}Running pre-commit hooks...${NC} =====";
 
-npm run lint || 
+npm run pre-commit:lint || 
 (
     echo " Lint failed, please fix the errors before committing.";
     false;
@@ -14,7 +14,7 @@ npm run lint ||
 
 echo "- ${GREEN}Tests${NC} passed. Proceeding with commit...";
 
-npm run test-changed || 
+npm run pre-commit:test || 
 (
     echo " Tests failed, please fix the errors before committing.";
     false;
