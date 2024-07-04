@@ -1,11 +1,33 @@
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
-npm lint || 
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+NC="\033[0m" # No Color
+ISSUE_COUNT=0
+
+npm run lint || 
 (
     echo "Lint failed, please fix the errors before committing.";
     false;
 )
 
-echo `${GREEN}Lint${NC} passed. Proceeding with commit...`;
+npm run test || 
+(
+    echo "Tests failed, please fix the errors before committing.";
+    ISSUE_COUNT=$((ISSUE_COUNT+1));
+)
 
-echo `${GREEN} All pre-commit hooks passed.${NC} Proceeding with commit...`;
+echo "${GREEN}Lint${NC} passed. Proceeding with commit...";
+
+[ $ISSUE_COUNT -eq 1 ] && 
+(
+    echo "$There is ${YELLOW}one issue${NC} that needs to be fixed before committing.\n";
+    exit 1;
+)
+
+[ $ISSUE_COUNT -gt 1 ] && 
+(
+    echo "There are ${RED}${ISSUE_COUNT} issues${NC} that need to be fixed before committing.\n";
+    exit 1;
+)
+
+echo "${GREEN} All pre-commit hooks passed.${NC} Proceeding with commit...\n";
